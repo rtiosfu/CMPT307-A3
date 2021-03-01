@@ -21,6 +21,7 @@ def memoizedCutRod(p,n):
 	return memoizedCutRodAux(p, n, r)
 
 def memoizedCutRodAux(p, n, r):
+	# print("here")
 	q = float('-inf')
 	if r[n] >= 0:
 		return r[n]
@@ -42,19 +43,21 @@ def bottomUpCutRod(p, n):
 	return r[n]
 
 def perfMeasure(n):
+	print("Printing measure for n = ", n)
+
 	startTime = time.perf_counter_ns()
 	print("Cutrod: ", cutRod(p, n))
-	elapsedTime = (time.perf_counter_ns() - startTime) / 10**9
+	elapsedTime = "{:.2e}".format((time.perf_counter_ns() - startTime) / 10**9)
 	print("Cutrod time: ", elapsedTime)
 
 	startTime = time.perf_counter_ns()
 	print("memo: ", memoizedCutRod(p, n))
-	elapsedTime = (time.perf_counter_ns() - startTime) / 10**9
+	elapsedTime = "{:.2e}".format((time.perf_counter_ns() - startTime) / 10**9)
 	print("memo time: ", elapsedTime)
 
 	startTime = time.perf_counter_ns()
 	print("bottom: ", bottomUpCutRod(p, n))
-	elapsedTime = (time.perf_counter_ns() - startTime) / 10**9
+	elapsedTime = "{:.2e}".format((time.perf_counter_ns() - startTime) / 10**9)
 	print("bottom time: ", elapsedTime)
 
-perfMeasure(10) #replace the number with the size to be tested
+perfMeasure(30) #replace the number with the size to be tested
